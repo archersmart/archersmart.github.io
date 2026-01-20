@@ -6,7 +6,7 @@ export const About = () => {
 		<section id="about" className="container py-14 sm:py-14">
 			<div className="bg-muted/50 border rounded-lg py-10">
 				<div className="px-6 flex flex-col-reverse md:flex-row gap-8 md:gap-12">
-					<div className="w-[400px] max-h-[450px] overflow-hidden rounded-lg">
+					<div className="md:w-[400px] md:max-h-[450px] overflow-hidden rounded-lg">
 						<img
 							src={pilot}
 							alt=""
