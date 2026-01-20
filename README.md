@@ -1,59 +1,62 @@
-# Shadcn/UI Landing Page Template
+# ArcherSmart.AI - AI Platform for Industrial Manufacturing
 
-## <a href="https://ui.shadcn.com/" target="_blank">ShadcnUI</a> + <a href="https://react.dev/" target="_blank">React</a> + <a href="https://www.typescriptlang.org/" target="_blank">TypeScript</a> + <a href="https://tailwindcss.com/" target="_blank">Tailwind</a>.
+The landing page for ArcherSmart.AI, a platform that provides AI-powered solutions for manufacturing industries.
 
-![shadch-landing-page](https://github.com/leoMirandaa/shadcn-landing-page/assets/61714687/3ba7b51f-9589-4541-800a-5ab7cecad1b5)
+## Tech Stack
 
-Build your React landing page effortlessly with the required sections to your project. <a href="https://shadcn-landing-page.vercel.app/" target="_blank">Live Demo</a>
+- [React](https://reactjs.org/) - A JavaScript library for building user interfaces.
+- [Vite](https://vitejs.dev/) - Next Generation Frontend Tooling.
+- [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework.
+- [Shadcn UI](https://ui.shadcn.com/) - Beautifully designed components built with Radix UI and Tailwind CSS.
+- [TypeScript](https://www.typescriptlang.org/) - Typed JavaScript at Any Scale.
 
-## Sections
+## Getting Started
 
-- [x] Navbar
-- [x] Sidebar(mobile)
-- [x] Hero
-- [x] Sponsors
-- [x] About
-- [x] Stats
-- [x] How It Works
-- [x] Features
-- [x] Services
-- [x] Call-to-Action (CTA)
-- [x] Testimonials
-- [x] Team
-- [x] Pricing
-- [x] Newsletter
-- [x] Frequently Asked Questions(FAQ)
-- [x] Footer
+Follow these steps to set up the project locally.
 
-## Features
+### Prerequisites
 
-- [x] Fully Responsive Design
-- [x] User Friendly Navigation
-- [x] Dark Mode
-- [x] Meta tags
+- Node.js (v18 or higher recommended)
+- npm, yarn, or pnpm
 
-## How to install
+### Installation
 
-1. Clone this repository:
+1. Clone the repository:
 
-```bash
-git clone https://github.com/leoMirandaa/shadcn-landing-page.git
-```
+   ```bash
+   git clone https://github.com/archersmart-ai/archersmart.github.io.git
+   ```
 
-2. Go into project
+2. Navigate to the project directory:
 
-```bash
-cd shadcn-landing-page
-```
+   ```bash
+   cd archersmart.github.io
+   ```
 
-3. Install dependencies
+3. Install dependencies:
 
-```bash
-npm install
-```
+   ```bash
+   npm install
+   ```
 
-4. Run project
+4. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+   Open [http://localhost:5173](http://localhost:5173) with your browser to see the result.
+
+## Build
+
+To build the project for production:
 
 ```bash
-npm run dev
+npm run build
 ```
+
+The build artifacts will be stored in the `dist/` directory.
+
+## License
+
+This project is licensed under the MIT License.
