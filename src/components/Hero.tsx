@@ -1,4 +1,5 @@
 import { Button } from "./ui/button";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { HeroCards } from "./HeroCards";
 
@@ -102,7 +103,7 @@ export const Hero = () => {
             className="w-full md:w-1/3"
             asChild
           >
-            <a href="/contact-us">预约体验</a>
+            <Link to="/contact-us">预约体验</Link>
           </Button>
         </div>
       </div>
