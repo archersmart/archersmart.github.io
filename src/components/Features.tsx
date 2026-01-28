@@ -9,8 +9,8 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import agentChat from "../assets/agent-chat.png";
-import agentChat2 from "../assets/agent-chat2.png";
+import agentChat from "../assets/agentChat1.png";
+import agentChat2 from "../assets/agentChat2.png";
 import planning1 from "../assets/planning1.png";
 import planning2 from "../assets/planning2.png";
 import planning3 from "../assets/planning3.png";
