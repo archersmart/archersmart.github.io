@@ -1,3 +1,4 @@
+import { useNavigate, useLocation } from "react-router-dom";
 // import { LogoIcon } from "./Icons";
 import footerBg from "../assets/footer-bg.png";
 import logo from "../assets/icon.png";
@@ -5,6 +6,33 @@ import logo from "../assets/icon.png";
 
 
 export const Footer = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("http")) return;
+    
+    e.preventDefault();
+
+    const hashIndex = href.indexOf("#");
+    const targetId = hashIndex !== -1 ? href.substring(hashIndex + 1) : null;
+
+    if (targetId) {
+      if (location.pathname !== "/") {
+        navigate("/");
+        setTimeout(() => {
+          const element = document.getElementById(targetId);
+          element?.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      } else {
+        const element = document.getElementById(targetId);
+        element?.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      navigate(href);
+    }
+  };
+
   return (
     <footer id="footer" className="relative">
       <div
@@ -86,6 +114,7 @@ export const Footer = () => {
             <a
               rel="noreferrer noopener"
               href="#advantages"
+              onClick={(e) => handleLinkClick(e, "#advantages")}
               className="opacity-60 hover:opacity-100"
             >
               核心优势
@@ -96,6 +125,7 @@ export const Footer = () => {
             <a
               rel="noreferrer noopener"
               href="#features"
+              onClick={(e) => handleLinkClick(e, "#features")}
               className="opacity-60 hover:opacity-100"
             >
               产品功能
@@ -106,6 +136,7 @@ export const Footer = () => {
             <a
               rel="noreferrer noopener"
               href="#faq"
+              onClick={(e) => handleLinkClick(e, "#faq")}
               className="opacity-60 hover:opacity-100"
             >
               FAQ
