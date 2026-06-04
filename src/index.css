@@ -2,7 +2,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* HeroCards background shadow */
+/* Meshy-like animated gradient blob for hero */
 .shadow {
   position: absolute;
   background: hsl(var(--primary) / 0%);
@@ -23,7 +23,7 @@ html {
     right: 460px;
   }
   to {
-    background: hsl(var(--primary) / 80%);
+    background: hsl(var(--primary) / 50%);
     right: 160px;
   }
 }
@@ -39,7 +39,7 @@ html {
       right: 460px;
     }
     to {
-      background: hsl(var(--primary) / 50%);
+      background: hsl(var(--primary) / 40%);
       right: 160px;
     }
   }

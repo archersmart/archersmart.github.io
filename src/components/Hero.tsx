@@ -2,9 +2,12 @@ import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { HeroCards } from "./HeroCards";
+import { useLanguage } from "@/i18n/LanguageContext";
+import { translations } from "@/i18n/translations";
+import { Sparkles, ShieldCheck, Zap, ArrowRight } from "lucide-react";
 
 type TypingProps = {
-  strings?: string[];
+  strings?: readonly string[];
   typingSpeed?: number;
   deletingSpeed?: number;
   delayBetweenWords?: number;
@@ -68,53 +71,97 @@ const Typing = ({
   );
 
   return (
-    <span id="typing-wrapper">
+    <span id="typing-wrapper" className="inline-block pb-[2px]">
       <span id="typing">{currentText}</span>
-      <span className="ml-2 inline-block w-0 h-[0.9em] align-baseline border-r-2 border-current animate-cursor-blink" />
+      <span className="ml-2 inline-block w-0 h-[0.8em] align-baseline border-r-2 border-accent-blue-base animate-cursor-blink translate-y-[2px]" />
     </span>
   );
 };
 
 export const Hero = () => {
+  const { locale } = useLanguage();
+  const t = translations[locale].hero;
+  const contactPath = locale === "en" ? "/en/contact-us" : "/contact-us";
+
   return (
-    <section className="container grid lg:grid-cols-[minmax(0,4fr)_minmax(0,6fr)] place-items-center py-20 md:py-32 gap-10">
-      <div className="text-center lg:text-start space-y-6">
-        <main className="text-5xl md:text-6xl font-bold">
-          <h1 className="inline">
-            <span className="inline bg-gradient-to-r from-[#1fc0f1] via-[#0D66F4] to-[#1668D7] text-transparent bg-clip-text">
+    <section className="relative overflow-hidden pt-24 pb-16 md:pt-32 md:pb-24">
+      {/* Background gradient blobs */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-accent-blue-soft blur-[120px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-cyan-soft blur-[100px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full bg-accent-blue-soft/50 blur-[80px]" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col items-center text-center">
+          {/* Badge / pill */}
+          <div className="inline-flex items-center gap-2 rounded-full border border-bg-translucent-strong bg-bg-strong px-4 py-1.5 text-sm text-label-soft mb-6">
+            <Sparkles className="size-4 text-accent-blue-base" />
+            <span>{t.pill}</span>
+          </div>
+
+          {/* Main headline */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-inter-tight tracking-tight max-w-5xl">
+            <span className="inline bg-gradient-to-r from-accent-blue-base via-cyan-base to-accent-blue-base text-transparent bg-clip-text">
               ArcherSmart.AI
-            </span>{" "}
-            {/* landing page */}
-          </h1>{" "} <br/>
-          <h4 className="inline">
-            <span className="inline bg-gradient-to-r bg-clip-text text-4xl">
-              让我们帮您把企业生产与决策
-              <br/>变得<Typing strings={["更简单", "更高效", "更智能"]} />
-            </span>{" "}
-          </h4>
-        </main>
+            </span>
+            <br />
+            <span className="text-label-title">
+              {t.headlinePrefix}
+              {locale === "en" ? " " : ""}
+              <Typing strings={t.typing} />
+            </span>
+          </h1>
 
-        <p className="text-sm text-muted-foreground md:w-10/12 mx-auto lg:mx-0">
-          您的一站式 AI 智能生产与决策平台
-        </p>
+          {/* Subtitle */}
+          <p className="mt-6 text-lg sm:text-xl text-label-base max-w-2xl">
+            {t.subtitle}
+          </p>
 
-        <div className="space-y-4 md:space-y-4 md:space-x-4">
-          <Button
-            className="w-full md:w-1/3"
-            asChild
-          >
-            <Link to="/contact-us">预约体验</Link>
-          </Button>
+          {/* CTAs */}
+          <div className="mt-10 flex flex-col sm:flex-row items-center gap-4">
+            <Button
+              className="rounded-full px-8 py-6 text-base font-semibold bg-accent-blue-base text-white hover:bg-accent-blue-base-hover shadow-accent-glow-sm hover:shadow-accent-glow transition-all duration-300"
+              asChild
+            >
+              <Link to={contactPath}>
+                {t.cta}
+                <ArrowRight className="ml-2 size-5" />
+              </Link>
+            </Button>
+            <Button
+              variant="outline"
+              className="rounded-full px-8 py-6 text-base font-semibold border-bg-translucent-strong text-label-base hover:text-label-title hover:bg-bg-shade"
+              asChild
+            >
+              <a href="#features">
+                {t.secondaryCta}
+              </a>
+            </Button>
+          </div>
+
+          {/* Trust bar */}
+          <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-label-soft text-sm">
+            <span className="flex items-center gap-2">
+              <ShieldCheck className="size-4 text-accent-blue-base" />
+              {t.trust[0]}
+            </span>
+            <span className="flex items-center gap-2">
+              <Zap className="size-4 text-accent-blue-base" />
+              {t.trust[1]}
+            </span>
+            <span className="flex items-center gap-2">
+              <Sparkles className="size-4 text-cyan-base" />
+              {t.trust[2]}
+            </span>
+          </div>
+        </div>
+
+        {/* Hero video showcase */}
+        <div className="mt-16 max-w-5xl mx-auto">
+          <HeroCards />
         </div>
       </div>
-
-      {/* Hero cards sections */}
-      <div className="z-10">
-        <HeroCards />
-      </div>
-
-      {/* Shadow effect */}
-      <div className="shadow"></div>
     </section>
   );
 };

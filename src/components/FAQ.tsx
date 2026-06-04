@@ -5,6 +5,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useLanguage } from "@/i18n/LanguageContext";
+import { translations } from "@/i18n/translations";
+import { Sparkles, MessageCircle } from "lucide-react";
 
 interface FAQProps {
   question: string;
@@ -12,72 +15,73 @@ interface FAQProps {
   value: string;
 }
 
-const FAQList: FAQProps[] = [
-  {
-    question: "Archer 智能排产系统是否免费？",
-    answer: "您可以联系我们免费试用 Archer 智能排产系统，也可以联系我们购买专业版。",
-    value: "item-1",
-  },
-  {
-    question: "Archer 智能排产系统的专业版是否有时间限制？",
-    answer:
-      "Archer 智能排产系统的专业版是一个无时间限制的版本，您可以根据自己的需求进行使用。",
-    value: "item-2",
-  },
-  {
-    question:
-      "Archer 智能排产系统的专业版是否有功能限制？",
-    answer:
-      "无限制，Archer 智能排产系统的专业版功能完善，覆盖了智能排产、库存管理、订单管理、AI 助手等多个方面。",
-    value: "item-3",
-  },
-  {
-    question: "Archer 智能排产系统的专业版是否有技术支持？",
-    answer: "您可以通过电话、短信、邮件等方式联系我们获取专业版的技术支持和咨询服务。",
-    value: "item-4",
-  }
-];
-
 export const FAQ = () => {
+  const { locale } = useLanguage();
+  const t = translations[locale].faq;
+  const contactPath = locale === "en" ? "/en/contact-us" : "/contact-us";
+  const FAQList: readonly FAQProps[] = t.items;
+
   return (
     <section
       id="faq"
-      className="container py-24 sm:py-12"
+      className="py-24 lg:px-8 px-4"
     >
-      <h2 className="text-3xl md:text-4xl font-bold mb-4">
-        <span className="bg-clip-text">
-          常见问题{" "}
-        </span>
-      </h2>
+      <div className="max-w-3xl mx-auto">
+        <div className="flex flex-col items-center text-center mb-16">
+          <div className="inline-flex items-center gap-2 rounded-full border border-bg-translucent-strong bg-bg-strong px-4 py-1.5 text-sm text-label-soft mb-4">
+            <Sparkles className="size-4 text-accent-blue-base" />
+            FAQ
+          </div>
+          <h2 className="text-3xl md:text-5xl font-bold font-figtree text-label-title">
+            {t.heading}
+          </h2>
+          <p className="mt-4 text-label-base max-w-xl">
+            {t.subtitle}
+          </p>
+        </div>
 
-      <Accordion
-        type="single"
-        collapsible
-        className="w-full AccordionRoot"
-      >
-        {FAQList.map(({ question, answer, value }: FAQProps) => (
-          <AccordionItem
-            key={value}
-            value={value}
-          >
-            <AccordionTrigger className="text-left">
-              {question}
-            </AccordionTrigger>
-
-            <AccordionContent>{answer}</AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
-
-      <h3 className="font-medium mt-4">
-        还有其他问题吗？{""}
-        <Link
-          to="/contact-us"
-          className="text-primary transition-all border-primary hover:border-b-2"
+        <Accordion
+          type="single"
+          collapsible
+          className="w-full space-y-3"
         >
-          联系我们
-        </Link>
-      </h3>
+          {FAQList.map(({ question, answer, value }: FAQProps) => (
+            <AccordionItem
+              key={value}
+              value={value}
+              className="rounded-2xl border border-bg-translucent-strong bg-bg-strong px-6 data-[state=open]:border-accent-blue-base/30 transition-colors"
+            >
+              <AccordionTrigger className="text-left text-label-title font-medium hover:text-accent-blue-base transition-colors no-underline hover:no-underline">
+                {question}
+              </AccordionTrigger>
+
+              <AccordionContent>
+                {answer.split("\n").map((line, i) => (
+                  <p key={i} className={i > 0 ? "mt-2 text-label-base" : "text-label-base"}>
+                    {line}
+                  </p>
+                ))}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+
+        <div className="mt-12 flex flex-col items-center text-center gap-4 p-8 rounded-2xl border border-bg-translucent-strong bg-bg-strong">
+          <MessageCircle className="size-8 text-accent-blue-base" />
+          <h3 className="text-lg font-semibold font-figtree text-label-title">
+            {t.more}
+          </h3>
+          <p className="text-sm text-label-soft">
+            {t.support}
+          </p>
+          <Link
+            to={contactPath}
+            className="inline-flex items-center gap-2 rounded-full bg-accent-blue-base text-white px-6 py-3 text-sm font-semibold hover:bg-accent-blue-base-hover transition-colors"
+          >
+            {t.contact}
+          </Link>
+        </div>
+      </div>
     </section>
   );
 };

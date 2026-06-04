@@ -2,10 +2,8 @@ import { useEffect } from "react";
 
 declare global {
   interface Window {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    dataLayer: any[];
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    gtag: (...args: any[]) => void;
+    dataLayer: unknown[][];
+    gtag: (...args: unknown[]) => void;
   }
 }
 
@@ -27,10 +25,8 @@ const GoogleAnalytics = () => {
     document.head.appendChild(script);
 
     // Initialize dataLayer and gtag
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     window.dataLayer = window.dataLayer || [];
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    function gtag(...args: any[]) {
+    function gtag(...args: unknown[]) {
       window.dataLayer.push(args);
     }
     gtag("js", new Date());
