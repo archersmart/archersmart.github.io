@@ -1,6 +1,6 @@
 import { Button } from "./ui/button";
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState, type MouseEvent } from "react";
 import { HeroCards } from "./HeroCards";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { translations } from "@/i18n/translations";
@@ -81,7 +81,31 @@ const Typing = ({
 export const Hero = () => {
   const { locale } = useLanguage();
   const t = translations[locale].hero;
+  const navigate = useNavigate();
+  const location = useLocation();
+  const basePath = locale === "en" ? "/en" : "/";
   const contactPath = locale === "en" ? "/en/contact-us" : "/contact-us";
+  const handleInPageNav = (e: MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const scroll = (retries: number) => {
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+      if (retries > 0) {
+        window.requestAnimationFrame(() => scroll(retries - 1));
+      }
+    };
+
+    if (location.pathname !== basePath) {
+      navigate(basePath);
+      window.setTimeout(() => scroll(30), 0);
+      return;
+    }
+
+    scroll(1);
+  };
 
   return (
     <section className="relative overflow-hidden pt-24 pb-16 md:pt-32 md:pb-24">
@@ -134,7 +158,7 @@ export const Hero = () => {
               className="rounded-full px-8 py-6 text-base font-semibold border-bg-translucent-strong text-label-base hover:text-label-title hover:bg-bg-shade"
               asChild
             >
-              <a href="#features">
+              <a href="#features" onClick={(e) => handleInPageNav(e, "features")}>
                 {t.secondaryCta}
               </a>
             </Button>
