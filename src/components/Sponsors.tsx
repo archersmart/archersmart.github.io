@@ -1,4 +1,5 @@
 import Marquee from "react-fast-marquee";
+import MiraclePlusImg from "../assets/miracleplus-logo.png";
 import IgarashiImg from "../assets/sponsors/IGARASHI.png";
 import JomooImg from "../assets/sponsors/Jomoo.png";
 import SuseImg from "../assets/sponsors/SUSE.png";
@@ -20,6 +21,11 @@ interface SponsorProps {
 }
 
 const sponsors: SponsorProps[] = [
+  {
+    image: MiraclePlusImg,
+    name: "MiraclePlus",
+    width: 220,
+  },
   {
     image: BamaImg,
     name: "八马茶业",

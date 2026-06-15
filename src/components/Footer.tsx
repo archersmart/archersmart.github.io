@@ -3,6 +3,7 @@ import footerBg from "../assets/footer-bg.png";
 import logo from "../assets/icon.png";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { translations } from "@/i18n/translations";
+import { BackedByMiraclePlus } from "@/components/BackedByMiraclePlus";
 
 export const Footer = () => {
   const navigate = useNavigate();
@@ -147,10 +148,11 @@ export const Footer = () => {
           </div>
         </section>
 
-        <section className="pb-8 text-center">
+        <section className="pb-20 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-label-muted">
             {t.copyright}
           </p>
+          <BackedByMiraclePlus />
         </section>
       </div>
     </footer>

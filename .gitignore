@@ -27,3 +27,4 @@ refer/
 *.njsproj
 *.sln
 *.sw?
+.gstack/

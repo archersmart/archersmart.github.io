@@ -32,8 +32,8 @@ export const zh = {
     ],
   },
   sponsors: {
-    title: "客户与伙伴",
-    badge: "合作伙伴",
+    title: "客户与合作伙伴",
+    badge: "客户认可",
   },
   advantages: {
     badge: "值得信赖",
@@ -65,8 +65,8 @@ export const zh = {
     ],
   },
   features: {
-    badge: "产品核心能力",
-    heading: "AI 排产与生产智能体一体化方案",
+    badge: "核心能力",
+    heading: "AI 排产能力",
     intro:
       "以排产智能体为核心，一套系统整合策略、分析与洞察，做到“看得清、排得好、调得快”。",
     coreBadge: "核心功能",
@@ -211,6 +211,7 @@ export const zh = {
     products: "产品",
     about: "About",
     tagline: "AI 驱动的离散制造 Harness 协同网络",
+    backedBy: "Backed by",
     nav: {
       advantages: "核心优势",
       features: "产品功能",
@@ -258,7 +259,7 @@ export const en = {
   },
   sponsors: {
     title: "Customers & Partners",
-    badge: "Partners",
+    badge: "Customer Recognition",
   },
   advantages: {
     badge: "Trusted",
@@ -290,8 +291,8 @@ export const en = {
     ],
   },
   features: {
-    badge: "Core Capabilities",
-    heading: "AI Agents for Scheduling & Production",
+    badge: "Capabilities",
+    heading: "AI Scheduling",
     intro:
       "An AI scheduling agent plus strategy, analytics, and insights—so factories see clearly, schedule well, and adapt fast.",
     coreBadge: "Core Feature",
@@ -438,6 +439,7 @@ export const en = {
     products: "Products",
     about: "About",
     tagline: "An AI-driven harness network for discrete manufacturing",
+    backedBy: "Backed by",
     nav: {
       advantages: "Advantages",
       features: "Features",
